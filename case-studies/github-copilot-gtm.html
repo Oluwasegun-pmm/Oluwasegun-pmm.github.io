@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub Copilot — End-to-End GTM Strategy | Segun Adetayo</title>
+<meta name="description" content="A full go-to-market strategy case study for GitHub Copilot — positioning, pricing, channels, launch sequencing, and KPIs.">
+<style>
+  :root{
+    --ink:#14161c;
+    --paper:#f7f6fb;
+    --paper-raised:#ffffff;
+    --line:#e2e0ee;
+    --text:#1c1d27;
+    --text-dim:#5c5c72;
+    --accent:#5b4fd6;
+    --accent-soft:#eeecfc;
+    --amber:#c9781f;
+    --amber-soft:#fbeedd;
+    --green:#1f8a63;
+    --green-soft:#e4f5ee;
+    --red:#b8433c;
+    --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Roboto Mono", monospace;
+    --sans: -apple-system, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --ink:#eceaf7; --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+    --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+    --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528; --red:#e08a84;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#eceaf7; --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+      --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+      --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528; --red:#e08a84;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);line-height:1.55;}
+  a{color:var(--accent);}
+  .shell{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1180px;margin:0 auto;gap:0;}
+  @media (max-width:880px){.shell{grid-template-columns:1fr;} nav.toc{display:none;}}
+  nav.toc{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:2.5rem 1.25rem 2rem 1.5rem;border-right:1px solid var(--line);}
+  .toc .back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;color:var(--text-dim);font-family:var(--mono);font-size:.72rem;margin-bottom:1.5rem;}
+  .toc .back:hover{color:var(--accent);}
+  .toc .kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:0 0 .35rem;}
+  .toc .product{font-size:1.05rem;font-weight:700;margin:0 0 1.6rem;}
+  .toc ol{list-style:none;margin:0;padding:0;counter-reset:sec;}
+  .toc li{counter-increment:sec;}
+  .toc a.sec{display:flex;gap:.55rem;align-items:baseline;text-decoration:none;color:var(--text-dim);font-size:.86rem;padding:.38rem 0;}
+  .toc a.sec:hover{color:var(--accent);}
+  .toc a.sec::before{content:counter(sec,decimal-leading-zero);font-family:var(--mono);font-size:.72rem;color:var(--accent);opacity:.8;flex-shrink:0;}
+  main{padding:2.5rem 2.75rem 6rem;min-width:0;}
+  @media (max-width:640px){main{padding:2rem 1.25rem 4rem;}}
+  header.cover{padding-bottom:2.25rem;margin-bottom:2.5rem;border-bottom:1px solid var(--line);}
+  header.cover .kicker{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .9rem;}
+  header.cover h1{font-size:2.35rem;line-height:1.12;margin:0 0 .75rem;text-wrap:balance;letter-spacing:-.01em;}
+  header.cover p.sub{max-width:62ch;color:var(--text-dim);font-size:1.05rem;margin:0 0 1.25rem;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .chip{font-family:var(--mono);font-size:.72rem;padding:.3rem .6rem;border-radius:3px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);}
+  section{margin-bottom:3.25rem;scroll-margin-top:1.5rem;}
+  section h2{display:flex;align-items:baseline;gap:.75rem;font-size:1.45rem;margin:0 0 .3rem;letter-spacing:-.005em;}
+  section h2 .num{font-family:var(--mono);font-size:.85rem;color:var(--accent);font-weight:500;}
+  section > .deck{color:var(--text-dim);max-width:68ch;margin:0 0 1.4rem;font-size:.98rem;}
+  h3{font-size:1.08rem;margin:1.6rem 0 .6rem;}
+  h4{font-family:var(--mono);font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-dim);margin:1.3rem 0 .5rem;}
+  p{margin:.5rem 0;max-width:72ch;}
+  ul,ol{max-width:72ch;padding-left:1.2rem;}
+  li{margin:.3rem 0;}
+  .card{background:var(--paper-raised);border:1px solid var(--line);border-radius:6px;padding:1.25rem 1.4rem;}
+  .grid{display:grid;gap:1rem;}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr);}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr);}
+  @media (max-width:760px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr;}}
+  .pillar{border-left:3px solid var(--accent);padding:.15rem 0 .15rem 1rem;margin:1rem 0;}
+  .pillar .head{font-weight:700;font-size:1rem;}
+  .pillar .proof{color:var(--text-dim);font-size:.92rem;margin-top:.2rem;}
+  .kpi{text-align:left;}
+  .kpi .label{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+  .kpi .value{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.55rem;font-weight:600;color:var(--accent);margin-top:.15rem;}
+  .kpi .note{font-size:.82rem;color:var(--text-dim);margin-top:.2rem;}
+  table{border-collapse:collapse;width:100%;font-size:.88rem;}
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;}
+  th,td{text-align:left;padding:.62rem .8rem;border-bottom:1px solid var(--line);white-space:nowrap;}
+  th{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-dim);background:var(--accent-soft);}
+  tr:last-child td{border-bottom:none;}
+  td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+  .tag{display:inline-block;font-family:var(--mono);font-size:.68rem;padding:.12rem .45rem;border-radius:3px;}
+  .tag.win{background:var(--green-soft);color:var(--green);}
+  .tag.watch{background:var(--amber-soft);color:var(--amber);}
+  .tag.risk{background:var(--red);color:#fff;}
+  .timeline{position:relative;padding-left:1.6rem;border-left:2px solid var(--line);}
+  .phase{margin-bottom:1.6rem;position:relative;}
+  .phase::before{content:"";position:absolute;left:-1.68rem;top:.3rem;width:9px;height:9px;border-radius:50%;background:var(--accent);border:2px solid var(--paper);}
+  .phase .when{font-family:var(--mono);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;}
+  .phase h4{margin:.15rem 0 .4rem;color:var(--text);font-size:.98rem;text-transform:none;letter-spacing:0;}
+  .callout{background:var(--accent-soft);border:1px solid var(--line);border-radius:6px;padding:1rem 1.2rem;font-size:.94rem;}
+  .callout .k{font-family:var(--mono);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem;}
+  .risk-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding:.9rem 0;border-bottom:1px solid var(--line);}
+  .risk-row:last-child{border-bottom:none;}
+  .risk-row .h{font-weight:700;font-size:.92rem;margin-bottom:.25rem;}
+  @media (max-width:700px){.risk-row{grid-template-columns:1fr;}}
+  footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--text-dim);font-size:.82rem;font-family:var(--mono);}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="toc">
+    <a class="back" href="../index.html">&larr; Segun Adetayo — Portfolio</a>
+    <p class="kicker">GTM Strategy</p>
+    <p class="product">GitHub Copilot</p>
+    <ol>
+      <li><a class="sec" href="#summary">Executive summary</a></li>
+      <li><a class="sec" href="#market">Market &amp; opportunity</a></li>
+      <li><a class="sec" href="#segments">ICP &amp; segmentation</a></li>
+      <li><a class="sec" href="#positioning">Positioning &amp; messaging</a></li>
+      <li><a class="sec" href="#pricing">Pricing &amp; packaging</a></li>
+      <li><a class="sec" href="#motion">GTM motion &amp; channels</a></li>
+      <li><a class="sec" href="#launch">Launch plan</a></li>
+      <li><a class="sec" href="#enablement">Sales enablement</a></li>
+      <li><a class="sec" href="#competitive">Competitive landscape</a></li>
+      <li><a class="sec" href="#metrics">Metrics &amp; KPIs</a></li>
+      <li><a class="sec" href="#risks">Risks &amp; mitigations</a></li>
+      <li><a class="sec" href="#roadmap">12-month roadmap</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="cover">
+      <p class="kicker">Go-to-Market Strategy — Case Study</p>
+      <h1>Taking GitHub Copilot from developer favorite to enterprise standard</h1>
+      <p class="sub">An end-to-end GTM plan for Microsoft's AI pair programmer — spanning positioning, pricing, channel motion, launch sequencing, and the metrics that prove it's working.</p>
+      <div class="meta-row">
+        <span class="chip">Product: GitHub Copilot</span>
+        <span class="chip">Owner: Microsoft / GitHub</span>
+        <span class="chip">Horizon: 12 months</span>
+        <span class="chip">By: Segun Adetayo</span>
+      </div>
+    </header>
+
+    <section id="summary">
+      <h2><span class="num">01</span>Executive summary</h2>
+      <p class="deck">Why GitHub Copilot, and what winning looks like from here.</p>
+      <p>GitHub Copilot is Microsoft's most adopted AI product by developer count and one of the clearest proof points that AI-assisted work pays for itself in hours, not quarters. It has already won the individual developer; the next 12 months are about winning the <strong>organization</strong> — the security team, the engineering VP, and the CFO who all have a vote before a 5,000-seat enterprise deal closes.</p>
+      <div class="grid cols-3">
+        <div class="card kpi">
+          <span class="label">Current wedge</span>
+          <div class="value">Individual dev</div>
+          <p class="note">Bottom-up adoption via free tier + IDE-native install</p>
+        </div>
+        <div class="card kpi">
+          <span class="label">This plan's target</span>
+          <div class="value">Org-wide standard</div>
+          <p class="note">Land-and-expand into Business &amp; Enterprise tiers</p>
+        </div>
+        <div class="card kpi">
+          <span class="label">Primary blocker</span>
+          <div class="value">Trust &amp; governance</div>
+          <p class="note">Security, IP indemnity, and code-quality objections at the buyer layer</p>
+        </div>
+      </div>
+      <p>The strategy below runs three motions in parallel: keep the free/individual funnel wide (it is the best-performing lead source Copilot has), professionalize the sales-assisted motion for 50–2,000 seat teams, and stand up a field-led enterprise motion that sells governance and measurable ROI, not novelty.</p>
+    </section>
+
+    <section id="market">
+      <h2><span class="num">02</span>Market &amp; opportunity</h2>
+      <p class="deck">Where the category is, and why now is the inflection point.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>Category state</h4>
+          <p>AI coding assistants have moved from novelty extension to default developer tooling. The open question is no longer "will teams adopt one" but "which one becomes the org standard, and does it stay a single autocomplete tool or become the interface to the whole SDLC (review, testing, migration, ops)."</p>
+        </div>
+        <div class="card">
+          <h4>Why Microsoft is positioned to win</h4>
+          <p>Distribution through VS Code and GitHub itself, Azure OpenAI compute at cost, and an existing enterprise sales motion via Microsoft 365 / Azure account teams that can attach Copilot to renewals already in flight.</p>
+        </div>
+      </div>
+      <h4>Demand signals to build the plan around</h4>
+      <ul>
+        <li>Engineering leaders are under board-level pressure to show measurable AI ROI — GTM should sell outcomes (cycle time, PR throughput, onboarding speed), not "AI-powered."</li>
+        <li>Security and platform teams are the newest veto power in the deal — a 2025–2026 shift from "developer likes it" to "CISO must approve it."</li>
+        <li>Coding agents (autonomous, multi-file, PR-opening) are resetting expectations of what "assistant" means — competitive pressure is coming as much from agent-native entrants as from other autocomplete tools.</li>
+      </ul>
+    </section>
+
+    <section id="segments">
+      <h2><span class="num">03</span>ICP &amp; segmentation</h2>
+      <p class="deck">Three buyers, three different reasons to say yes.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Segment</th><th>Who</th><th>Trigger to buy</th><th>Primary motion</th></tr></thead>
+          <tbody>
+            <tr><td>Individual / Pro</td><td>Solo devs, students, OSS maintainers, freelancers</td><td>Free tier friction (rate limits) or wanting Claude/GPT model choice in-IDE</td><td>Self-serve, product-led</td></tr>
+            <tr><td>Business (SMB / mid-market)</td><td>Eng managers at 20–2,000 dev orgs</td><td>Ad-hoc individual adoption already happening; wants policy control &amp; invoicing</td><td>Sales-assisted, low-touch</td></tr>
+            <tr><td>Enterprise</td><td>VP Eng / CTO / CISO at 2,000+ dev orgs, regulated industries</td><td>Existing Azure/M365 renewal; competitive RFP; compliance mandate for AI tool governance</td><td>Field sales + partner, high-touch</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>Who each segment distrusts most</h4>
+      <p>Individuals distrust vendor lock-in to one model. Business buyers distrust seat-cost sprawl with no usage visibility. Enterprise buyers distrust data leakage and unclear IP indemnification. Messaging and packaging both need to answer the distrust specific to the segment being sold to — not a single generic pitch.</p>
+    </section>
+
+    <section id="positioning">
+      <h2><span class="num">04</span>Positioning &amp; messaging</h2>
+      <p class="deck">One product, three angles of the same value proposition — tuned per buyer.</p>
+
+      <h4>Positioning statement (internal)</h4>
+      <div class="callout">
+        <span class="k">Reference</span>
+        For engineering organizations who need to ship more, safer, without growing headcount, GitHub Copilot is an AI pair programmer built into the tools developers already use, that turns natural language and existing code context into working code, tests, and reviews. Unlike general-purpose chat assistants bolted onto an IDE, Copilot is trained on and grounded in the codebase, repo, and org context it's running inside — so suggestions match how this team actually writes code, not how the internet writes code.
+      </div>
+
+      <h4>Value proposition (external)</h4>
+      <p>Copilot helps development teams ship working code faster by turning comments, existing code, and natural-language prompts into accepted suggestions, tests, and even full pull requests — without leaving the editor, and without sending code to a black box you can't govern.</p>
+
+      <h4>Messaging pillars</h4>
+      <div class="pillar">
+        <div class="head">1. Meets developers where they already are</div>
+        <div class="proof">Native in VS Code, Visual Studio, JetBrains, Neovim, and GitHub.com — zero new tool to learn, zero context-switch tax.</div>
+      </div>
+      <div class="pillar">
+        <div class="head">2. Grounded in your code, not just public code</div>
+        <div class="proof">Repo-aware context, org-level custom instructions, and Copilot Enterprise's knowledge-base indexing mean suggestions reflect internal libraries and conventions, not generic Stack Overflow patterns.</div>
+      </div>
+      <div class="pillar">
+        <div class="head">3. Goes beyond autocomplete into the full workflow</div>
+        <div class="proof">Copilot Chat, code review, workspace-level agent tasks, and PR summarization extend the value from "finish my line" to "take this ticket."</div>
+      </div>
+      <div class="pillar">
+        <div class="head">4. Enterprise-grade trust by default</div>
+        <div class="proof">IP indemnification, no training on private code, org-wide policy controls, and audit logging — governance is a checkbox at signup, not a six-month custom project.</div>
+      </div>
+
+      <h4>Feature → benefit map (sample)</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Feature</th><th>So what?</th><th>So what?</th><th>Benefit</th></tr></thead>
+          <tbody>
+            <tr><td>Inline code completion</td><td>Boilerplate and repetitive patterns get written automatically</td><td>Developer stays in flow state, fewer context switches</td><td>More shipped features per sprint without more hires</td></tr>
+            <tr><td>Copilot code review</td><td>Nitpicks &amp; common bugs get caught before a human reviewer looks</td><td>Senior engineers spend review time on architecture, not style</td><td>Faster PR cycle time, better use of senior headcount</td></tr>
+            <tr><td>Org policy controls + audit log</td><td>Security team can see and restrict what Copilot can access</td><td>AI tooling clears procurement/compliance review</td><td>Faster enterprise-wide rollout, no shadow-IT AI usage</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Objection handling</h4>
+      <ul>
+        <li><strong>"AI-generated code is a security/quality risk."</strong> Copilot ships suggestions a human reviews and accepts line-by-line; pair with Copilot code review and existing CI/static analysis — it's an accelerant on top of existing gates, not a bypass of them.</li>
+        <li><strong>"We're locked into GitHub/Microsoft."</strong> Copilot supports multi-model choice (OpenAI, Anthropic, Google models) in the same interface, and works in non-Microsoft IDEs — it's an AI layer, not a walled garden.</li>
+        <li><strong>"Seat cost doesn't map to value."</strong> Business/Enterprise tiers ship usage and acceptance-rate reporting so engineering leadership can tie license spend to measurable throughput, not a flat per-seat leap of faith.</li>
+      </ul>
+
+      <h4>Audience-specific headline</h4>
+      <div class="grid cols-3">
+        <div class="card"><h4>Practitioner</h4><p style="margin:0">"Stop writing the code you've already written a hundred times."</p></div>
+        <div class="card"><h4>Eng VP / economic buyer</h4><p style="margin:0">"Measurable throughput gains, rolled out without a platform migration."</p></div>
+        <div class="card"><h4>Security / technical evaluator</h4><p style="margin:0">"Org-wide AI coding, with the audit trail your compliance team already asks for."</p></div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <h2><span class="num">05</span>Pricing &amp; packaging</h2>
+      <p class="deck">Packaging should mirror the segmentation — friction goes down as commitment goes up.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tier</th><th>Target</th><th>Price anchor</th><th>Unlocks</th></tr></thead>
+          <tbody>
+            <tr><td>Free</td><td>Individuals, students, OSS</td><td class="num">$0</td><td>Limited monthly completions &amp; chat requests — top-of-funnel, not a stripped demo</td></tr>
+            <tr><td>Pro / Pro+</td><td>Power individuals</td><td class="num">$10–39/mo</td><td>Higher/unlimited usage, premium model access, Copilot coding agent</td></tr>
+            <tr><td>Business</td><td>Teams, SMB</td><td class="num">$19/user/mo</td><td>Centralized billing, policy management, org-wide license admin</td></tr>
+            <tr><td>Enterprise</td><td>2,000+ dev orgs</td><td class="num">$39/user/mo</td><td>Codebase-grounded knowledge bases, fine-grained governance, SSO/SCIM, premium support</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Packaging principle: never make the free tier feel punitive — it's the top of a funnel that Microsoft's own telemetry shows converts well once a developer hits a natural usage ceiling. Business and Enterprise should be priced and scoped so the <em>decision-maker</em> (not the individual developer) is buying governance and reporting, which the developer already wants regardless of who pays.</p>
+    </section>
+
+    <section id="motion">
+      <h2><span class="num">06</span>GTM motion &amp; channels</h2>
+      <p class="deck">Three motions, run concurrently, feeding the same pipeline.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <h4>Product-led (bottom-up)</h4>
+          <ul>
+            <li>Free tier inside VS Code / GitHub — zero-click discovery</li>
+            <li>In-product upgrade nudges at usage-limit moments</li>
+            <li>Developer content: YouTube, dev.to, conference talks, GitHub Universe</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Sales-assisted (mid-market)</h4>
+          <ul>
+            <li>Inside sales triggered by org domain hitting adoption threshold (e.g. 15+ individual users at one company)</li>
+            <li>Self-serve org upgrade flow with a human backstop for procurement questions</li>
+            <li>Champion-to-buyer playbook: arm the engineer already using it to make the internal case</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Field-led (enterprise)</h4>
+          <ul>
+            <li>Attach to existing Microsoft Azure/M365 account team renewals</li>
+            <li>Partner-sourced via SIs (Accenture, Avanade) and ISVs already inside the account</li>
+            <li>Executive briefing center demos, security/compliance workshops, paid pilot-to-scale programs</li>
+          </ul>
+        </div>
+      </div>
+      <h4>Channel notes</h4>
+      <ul>
+        <li>GitHub Marketplace and the VS Code extension listing are themselves acquisition channels — treat listing copy and reviews as owned media.</li>
+        <li>Microsoft's existing enterprise field org is the unlock for the enterprise segment: Copilot should ride shotgun on Azure consumption commitment (MACC) conversations, not run a separate sales cycle from scratch.</li>
+        <li>Developer relations (DevRel) content should target the objections in Section 4, not just feature announcements — "how we secure your code" outperforms "look what Copilot can do" once a segment is trust-limited rather than awareness-limited.</li>
+      </ul>
+    </section>
+
+    <section id="launch">
+      <h2><span class="num">07</span>Launch plan</h2>
+      <p class="deck">Framed as a re-launch: the product exists, the enterprise motion doesn't yet — sequence around proving that motion.</p>
+      <div class="timeline">
+        <div class="phase">
+          <div class="when">Phase 0 — Weeks 1–4</div>
+          <h4>Foundation</h4>
+          <p>Finalize enterprise packaging, ship the ROI/usage reporting dashboard buyers ask for in every enterprise deal, train the field org on the new objection-handling messaging, and recruit 5–8 lighthouse enterprise accounts for paid pilots.</p>
+        </div>
+        <div class="phase">
+          <div class="when">Phase 1 — Weeks 5–10</div>
+          <h4>Lighthouse pilots</h4>
+          <p>Run structured 6-week pilots with lighthouse accounts, instrumented against agreed success metrics (PR cycle time, acceptance rate, developer satisfaction). Produce first-party case studies before wide launch — enterprise buyers move on peer proof, not vendor claims.</p>
+        </div>
+        <div class="phase">
+          <div class="when">Phase 2 — Weeks 11–16</div>
+          <h4>Public enterprise push</h4>
+          <p>Launch case studies, refreshed enterprise landing page, and a named campaign at a flagship event (Microsoft Build / GitHub Universe timing where possible). Field org activates outbound into the account list surfaced by Phase 0 telemetry (orgs already showing organic Copilot adoption).</p>
+        </div>
+        <div class="phase">
+          <div class="when">Phase 3 — Months 5–12</div>
+          <h4>Scale &amp; expand</h4>
+          <p>Land-and-expand motion: every Business-tier account with 100+ seats gets a proactive enterprise upsell touch. Partner-sourced pipeline scales via SI enablement. Continuous PLG optimization keeps the top of funnel wide.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="enablement">
+      <h2><span class="num">08</span>Sales enablement</h2>
+      <p class="deck">What the field needs in hand before a single enterprise call happens.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>Assets to ship</h4>
+          <ul>
+            <li>Segment-specific one-pagers (practitioner, eng VP, security) built from the pillars in Section 4</li>
+            <li>ROI calculator tied to PR throughput / cycle-time inputs a prospect can self-serve or a rep can run live</li>
+            <li>Security &amp; compliance packet: data handling, IP indemnity terms, SOC2/ISO references, in plain language</li>
+            <li>Competitive battlecards (see Section 9) refreshed quarterly</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Field motions to train</h4>
+          <ul>
+            <li>Spotting organic adoption signals in an account before outbound (usage telemetry → account list)</li>
+            <li>Running a pilot-to-scale conversation, not a one-shot demo</li>
+            <li>Objection handling live, not just in a deck — role-play the three objections in Section 4</li>
+            <li>Attaching Copilot to existing Azure/M365 renewal conversations without diluting either deal</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="competitive">
+      <h2><span class="num">09</span>Competitive landscape</h2>
+      <p class="deck">Compete on trust and workflow depth, not on raw model novelty — that changes monthly and isn't a durable moat for anyone.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Competitor</th><th>Where they win</th><th>Where Copilot wins</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Cursor</td><td>Agent-native editor UX, fast-moving power-user features</td><td>Zero-install distribution inside tools teams already standardize on; enterprise governance</td><td><span class="tag watch">watch</span></td></tr>
+            <tr><td>Amazon Q Developer</td><td>Deep AWS-native workflows</td><td>IDE-neutral, GitHub-native, broader model choice</td><td><span class="tag win">favorable</span></td></tr>
+            <tr><td>Google Gemini Code Assist</td><td>GCP-native integration, Google Workspace bundle</td><td>Larger existing developer install base, GitHub network effect</td><td><span class="tag win">favorable</span></td></tr>
+            <tr><td>Windsurf / Codeium</td><td>Aggressive pricing, agent-first positioning</td><td>Enterprise trust story, existing procurement relationships via Microsoft</td><td><span class="tag watch">watch</span></td></tr>
+            <tr><td>In-house / "do nothing"</td><td>No new vendor risk to approve</td><td>Quantified ROI case erodes the status-quo argument over time</td><td><span class="tag win">favorable</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The single biggest competitive risk is category redefinition: if "coding assistant" becomes "autonomous coding agent" faster than Copilot's roadmap keeps pace, competitors can reposition Copilot as legacy autocomplete. The agent-mode roadmap in Section 12 is a defensive priority, not just a feature bet.</p>
+    </section>
+
+    <section id="metrics">
+      <h2><span class="num">10</span>Metrics &amp; KPIs</h2>
+      <p class="deck">One north star, with leading and lagging indicators underneath each motion.</p>
+      <div class="grid cols-3">
+        <div class="card kpi">
+          <span class="label">North star</span>
+          <div class="value">Paid seats, active weekly</div>
+          <p class="note">Not licenses sold — licenses actually used, weekly</p>
+        </div>
+        <div class="card kpi">
+          <span class="label">PLG leading indicator</span>
+          <div class="value">Free → paid conversion rate</div>
+          <p class="note">By usage-limit trigger type</p>
+        </div>
+        <div class="card kpi">
+          <span class="label">Enterprise leading indicator</span>
+          <div class="value">Organic seats per domain</div>
+          <p class="note">Accounts crossing the outbound-trigger threshold</p>
+        </div>
+      </div>
+      <h4>Full KPI set</h4>
+      <ul>
+        <li><strong>Acquisition:</strong> free signups by channel, IDE-extension install-to-first-suggestion-accepted time</li>
+        <li><strong>Activation:</strong> suggestion acceptance rate, chat sessions per active user in week 1</li>
+        <li><strong>Expansion:</strong> Business/Enterprise upsell rate from qualifying accounts, seats added per existing enterprise account (NRR)</li>
+        <li><strong>Retention:</strong> weekly active / licensed seat ratio (the "shelfware" signal enterprise renewals hinge on)</li>
+        <li><strong>Deal-level:</strong> pilot-to-contract conversion rate, sales cycle length by segment, win rate vs. named competitors</li>
+        <li><strong>Outcome proof:</strong> customer-reported PR cycle-time delta, developer satisfaction (survey), case studies published per quarter</li>
+      </ul>
+    </section>
+
+    <section id="risks">
+      <h2><span class="num">11</span>Risks &amp; mitigations</h2>
+      <p class="deck">Named risks, not hedged generalities.</p>
+      <div class="card">
+        <div class="risk-row">
+          <div><div class="h">Shelfware risk in enterprise deals</div><p style="margin:0">Seats purchased but not activated erode renewal case and NRR.</p></div>
+          <div><div class="h">Mitigation</div><p style="margin:0">Tie CSM engagement to weekly-active ratio, not just contract signature; build activation into the pilot-to-scale playbook.</p></div>
+        </div>
+        <div class="risk-row">
+          <div><div class="h">Agent-native entrants reframe the category</div><p style="margin:0">"Autocomplete" positioning ages badly if competitors own "autonomous agent."</p></div>
+          <div><div class="h">Mitigation</div><p style="margin:0">Ship and message Copilot's own agent/workspace-task capability aggressively in Section 12's roadmap; don't cede the framing.</p></div>
+        </div>
+        <div class="risk-row">
+          <div><div class="h">Security/compliance objection stalls enterprise cycle</div><p style="margin:0">Long procurement review cycles kill deal velocity.</p></div>
+          <div><div class="h">Mitigation</div><p style="margin:0">Pre-built compliance packet (Section 8) shipped at first enterprise touch, not requested reactively mid-cycle.</p></div>
+        </div>
+        <div class="risk-row">
+          <div><div class="h">Perceived Microsoft/GitHub lock-in</div><p style="margin:0">Buyers wary of ecosystem dependence hesitate or actively seek neutral alternatives.</p></div>
+          <div><div class="h">Mitigation</div><p style="margin:0">Keep multi-model support and non-Microsoft IDE parity visible in every competitive conversation — it directly rebuts the objection.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <h2><span class="num">12</span>12-month roadmap</h2>
+      <p class="deck">GTM milestones paired with the product bets they depend on.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Quarter</th><th>GTM milestone</th><th>Dependent product bet</th></tr></thead>
+          <tbody>
+            <tr><td>Q1</td><td>Lighthouse pilots live; compliance packet shipped</td><td>Usage/ROI reporting dashboard (Business &amp; Enterprise)</td></tr>
+            <tr><td>Q2</td><td>Public enterprise campaign; first case studies published</td><td>Org-wide knowledge base grounding at GA quality</td></tr>
+            <tr><td>Q3</td><td>Partner/SI enablement scaled; land-and-expand motion active in accounts &gt;100 seats</td><td>Coding agent (PR-opening, multi-file) hardened for enterprise-scale repos</td></tr>
+            <tr><td>Q4</td><td>Renewal cycle proof points published; category-defense messaging refresh</td><td>Deeper CI/CD and code-review workflow integration</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      GTM strategy case study — GitHub Copilot · by Segun Adetayo · figures are illustrative planning anchors, not published pricing or financials.
+    </footer>
+  </main>
+</div>
+</body>
+</html>
