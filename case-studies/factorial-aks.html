@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Factorial &amp; Azure Kubernetes Service — Customer Story | Segun Adetayo</title>
+<meta name="description" content="Customer story: how Factorial used Azure Kubernetes Service and Azure OpenAI to scale HR automation across Europe and Latin America.">
+<style>
+  :root{
+    --paper:#f7f6fb; --paper-raised:#ffffff; --line:#e2e0ee;
+    --text:#1c1d27; --text-dim:#5c5c72;
+    --accent:#5b4fd6; --accent-soft:#eeecfc;
+    --amber:#c9781f; --amber-soft:#fbeedd;
+    --green:#1f8a63; --green-soft:#e4f5ee;
+    --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Roboto Mono", monospace;
+    --sans: -apple-system, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+    --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+    --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+      --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+      --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);line-height:1.6;}
+  a{color:var(--accent);}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 1.75rem 5rem;}
+  .back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;color:var(--text-dim);font-family:var(--mono);font-size:.78rem;padding:2rem 0 0;}
+  .back:hover{color:var(--accent);}
+  header.cover{padding:1.5rem 0 2.75rem;border-bottom:1px solid var(--line);margin-bottom:2.5rem;}
+  .kicker{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .9rem;}
+  h1{font-size:2.15rem;line-height:1.16;margin:0 0 .75rem;text-wrap:balance;letter-spacing:-.01em;}
+  p.sub{max-width:60ch;color:var(--text-dim);font-size:1.03rem;margin:0 0 1.25rem;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .chip{font-family:var(--mono);font-size:.72rem;padding:.3rem .6rem;border-radius:3px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);}
+  h2{font-size:1.2rem;margin:2.5rem 0 .8rem;letter-spacing:-.005em;}
+  h2 .num{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:500;margin-right:.6rem;}
+  p{margin:.5rem 0;max-width:68ch;}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.25rem 0;}
+  @media (max-width:700px){.kpi-row{grid-template-columns:repeat(2,1fr);}}
+  .kpi{background:var(--paper-raised);border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.25rem;}
+  .kpi .value{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.55rem;font-weight:700;color:var(--green);}
+  .kpi .label{font-size:.82rem;color:var(--text-dim);margin-top:.25rem;}
+  .stack-list{padding-left:1.2rem;}
+  .stack-list li{margin:.3rem 0;}
+  blockquote{margin:1.5rem 0;padding:1.3rem 1.5rem;background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:4px;font-size:1.05rem;font-style:italic;}
+  blockquote cite{display:block;margin-top:.75rem;font-style:normal;font-family:var(--mono);font-size:.8rem;color:var(--text-dim);}
+  .role-note{background:var(--amber-soft);border:1px solid var(--line);border-radius:6px;padding:1rem 1.25rem;font-size:.92rem;margin:2rem 0 0;}
+  .role-note .k{font-family:var(--mono);font-size:.72rem;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem;}
+  footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--text-dim);font-size:.82rem;font-family:var(--mono);}
+  footer a{color:var(--text-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Segun Adetayo — Portfolio</a>
+
+  <header class="cover">
+    <p class="kicker">Customer Story</p>
+    <h1>Factorial scales HR automation across Europe and Latin America on Azure Kubernetes Service</h1>
+    <p class="sub">Migrating off a competing cloud to AKS and Azure OpenAI let Factorial's engineers stop managing infrastructure and start building AI agents that eliminate the busywork managers were drowning in.</p>
+    <div class="meta-row">
+      <span class="chip">Customer: Factorial</span>
+      <span class="chip">Industry: HR / People Management Software</span>
+      <span class="chip">Product: Azure Kubernetes Service</span>
+    </div>
+  </header>
+
+  <h2><span class="num">01</span>The challenge</h2>
+  <p>Managers at the small and medium-sized businesses Factorial serves were buried in manual administrative work — absence tracking, document management, vacation approvals — that left no time for the part of HR that actually retains people: culture and development. As one customer put it, HR teams were "overwhelmed with operational tasks" that diverted attention from strategic initiatives.</p>
+
+  <h2><span class="num">02</span>The solution</h2>
+  <p>Factorial migrated from a competing cloud provider to Microsoft Azure to get AI infrastructure, interoperability with the business applications its customers already run, and a platform that could scale go-to-market globally. The stack:</p>
+  <ul class="stack-list">
+    <li>Azure Kubernetes Service (AKS) — with real-time autoscaling for onboarding surges across Italy, France, Portugal, and Latin America</li>
+    <li>Azure Database for MySQL — cut operational overhead so engineers could spend time on features, not database maintenance</li>
+    <li>Azure OpenAI Service with Foundry Models — powering AI agents that answer employee questions and trigger workflows autonomously</li>
+    <li>Microsoft Teams, Outlook, and Dynamics 365 Business Central — the surfaces those AI agents plug into for a seamless employee experience</li>
+  </ul>
+
+  <h2><span class="num">03</span>The results</h2>
+  <div class="kpi-row">
+    <div class="kpi"><div class="value">65%</div><div class="label">Reduction in administrative time</div></div>
+    <div class="kpi"><div class="value">2 days</div><div class="label">Cut from vacation approval time</div></div>
+    <div class="kpi"><div class="value">34%</div><div class="label">Increase in survey participation</div></div>
+    <div class="kpi"><div class="value">22%</div><div class="label">Reduction in involuntary turnover</div></div>
+  </div>
+  <p>The AI agents didn't just automate tasks — they gave managers back the time and attention that drives retention, which is the actual metric HR leaders are judged on.</p>
+
+  <blockquote>
+    "AI is not here to take jobs but to eliminate boring tasks. This technology frees us to focus on meaningful work."
+    <cite>Carlos Cuadrado Barril, Managing Director, h&amp;k</cite>
+  </blockquote>
+
+  <div class="role-note">
+    <span class="k">About this case study</span>
+    This is a customer story I worked on, published by Microsoft. Read the original on
+    <a href="https://www.microsoft.com/en/customers/story/25568-factorial-azure-kubernetes-service" target="_blank" rel="noopener">microsoft.com/customers</a>.
+  </div>
+
+  <footer>
+    Customer story — Factorial &amp; Azure Kubernetes Service · by Segun Adetayo · source: Microsoft Customer Stories
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClearTax &amp; Azure OpenAI Service — Customer Story | Segun Adetayo</title>
+<meta name="description" content="Customer story: how ClearTax scaled a viral WhatsApp tax-filing platform on Azure OpenAI Service without downtime.">
+<style>
+  :root{
+    --paper:#f7f6fb; --paper-raised:#ffffff; --line:#e2e0ee;
+    --text:#1c1d27; --text-dim:#5c5c72;
+    --accent:#5b4fd6; --accent-soft:#eeecfc;
+    --amber:#c9781f; --amber-soft:#fbeedd;
+    --green:#1f8a63; --green-soft:#e4f5ee;
+    --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Roboto Mono", monospace;
+    --sans: -apple-system, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+    --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+    --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+      --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+      --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);line-height:1.6;}
+  a{color:var(--accent);}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 1.75rem 5rem;}
+  .back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;color:var(--text-dim);font-family:var(--mono);font-size:.78rem;padding:2rem 0 0;}
+  .back:hover{color:var(--accent);}
+  header.cover{padding:1.5rem 0 2.75rem;border-bottom:1px solid var(--line);margin-bottom:2.5rem;}
+  .kicker{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .9rem;}
+  h1{font-size:2.15rem;line-height:1.16;margin:0 0 .75rem;text-wrap:balance;letter-spacing:-.01em;}
+  p.sub{max-width:60ch;color:var(--text-dim);font-size:1.03rem;margin:0 0 1.25rem;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .chip{font-family:var(--mono);font-size:.72rem;padding:.3rem .6rem;border-radius:3px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);}
+  h2{font-size:1.2rem;margin:2.5rem 0 .8rem;letter-spacing:-.005em;}
+  h2 .num{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:500;margin-right:.6rem;}
+  p{margin:.5rem 0;max-width:68ch;}
+  .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.25rem 0;}
+  @media (max-width:640px){.kpi-row{grid-template-columns:1fr;}}
+  .kpi{background:var(--paper-raised);border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.25rem;}
+  .kpi .value{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.55rem;font-weight:700;color:var(--green);}
+  .kpi .label{font-size:.82rem;color:var(--text-dim);margin-top:.25rem;}
+  .stack-list{padding-left:1.2rem;}
+  .stack-list li{margin:.3rem 0;}
+  blockquote{margin:1.5rem 0;padding:1.3rem 1.5rem;background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:4px;font-size:1.05rem;font-style:italic;}
+  blockquote cite{display:block;margin-top:.75rem;font-style:normal;font-family:var(--mono);font-size:.8rem;color:var(--text-dim);}
+  .role-note{background:var(--amber-soft);border:1px solid var(--line);border-radius:6px;padding:1rem 1.25rem;font-size:.92rem;margin:2rem 0 0;}
+  .role-note .k{font-family:var(--mono);font-size:.72rem;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem;}
+  footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--text-dim);font-size:.82rem;font-family:var(--mono);}
+  footer a{color:var(--text-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Segun Adetayo — Portfolio</a>
+
+  <header class="cover">
+    <p class="kicker">Customer Story</p>
+    <h1>ClearTax scales a viral WhatsApp tax-filing platform on Azure OpenAI Service</h1>
+    <p class="sub">When traffic doubled every four hours during peak tax season, ClearTax needed infrastructure — and a partner — that could keep up. Azure OpenAI Service delivered zero downtime and a 600x cost reduction on inference.</p>
+    <div class="meta-row">
+      <span class="chip">Customer: ClearTax</span>
+      <span class="chip">Industry: FinTech / Digital Native Startup</span>
+      <span class="chip">Product: Azure OpenAI Service</span>
+    </div>
+  </header>
+
+  <h2><span class="num">01</span>The challenge</h2>
+  <p>ClearTax's generative AI-powered WhatsApp tax-filing platform went viral — a good problem, until it wasn't. Traffic doubled roughly every four hours during peak season, and the company rapidly hit usage limits with its previous cloud provider, with no clear support channel to resolve issues as the platform buckled under its own success.</p>
+
+  <h2><span class="num">02</span>The solution</h2>
+  <p>ClearTax and Microsoft worked together to expand service capacity across dozens of geographies and stand up an enterprise agreement built for the scale ClearTax was seeing. The stack:</p>
+  <ul class="stack-list">
+    <li>Azure OpenAI Service — running GPT-4o mini and the broader GPT model series</li>
+    <li>Microsoft Azure cloud infrastructure — distributed to support scale without downtime</li>
+  </ul>
+  <p>Microsoft trained ClearTax's engineering team to independently manage Azure servers, modify content, and build their own monitoring dashboards — so ClearTax could keep shipping without waiting on a support queue during its highest-traffic season.</p>
+
+  <h2><span class="num">03</span>The results</h2>
+  <div class="kpi-row">
+    <div class="kpi"><div class="value">200,000+</div><div class="label">First-time tax filers supported in the initial season</div></div>
+    <div class="kpi"><div class="value">₹300M</div><div class="label">(~$3.4M) in eligible tax refunds generated</div></div>
+    <div class="kpi"><div class="value">600x</div><div class="label">Cost reduction after switching to GPT-4o mini</div></div>
+  </div>
+  <p>Latency dropped 60%, the platform ran with zero downtime through scaling and feature deployments, and the service now reaches 95% of smartphone users in India via WhatsApp — with ClearTax targeting 5x filing growth next season and 10x long-term.</p>
+
+  <blockquote>
+    "Our greatest problem was the virality of the product and having to scramble to serve the scale that kicked in intrinsically... We were stuck at an impasse where our traffic was doubling nearly every four hours."
+    <cite>Satwik Gokina, Senior Data Science Manager, ClearTax</cite>
+  </blockquote>
+  <blockquote>
+    "Azure gives us a tension-free environment... so that we can work on new product innovation."
+    <cite>Nitin Jain, Senior Engineering Manager, ClearTax</cite>
+  </blockquote>
+
+  <div class="role-note">
+    <span class="k">About this case study</span>
+    This is a customer story I worked on, published by Microsoft. Read the original on
+    <a href="https://www.microsoft.com/en/customers/story/22440-cleartax-azure-open-ai-service" target="_blank" rel="noopener">microsoft.com/customers</a>.
+  </div>
+
+  <footer>
+    Customer story — ClearTax &amp; Azure OpenAI Service · by Segun Adetayo · source: Microsoft Customer Stories
+  </footer>
+</div>
+</body>
+</html>
