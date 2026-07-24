@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="color-scheme" content="dark" />
-<title>Segun Adetayo — Senior Product Marketing Lead · AI &amp; Agentic Systems</title>
-<meta name="description" content="Senior Product Marketing Lead positioning and launching AI and agentic products across Core AI, Data, and Cloud-Native platforms. $320M+ pipeline, 635K+ developers activated, $10Bn product business scaled. Tuck MBA · PMP · AZ-900 · AI-900." />
+<meta name="color-scheme" content="dark light" />
+<title>Segun Adetayo — Principal Product Marketing Manager · Technical PMM, AI &amp; Agentic Systems</title>
+<meta name="description" content="Principal Product Marketing Manager and Technical PMM positioning and launching AI and agentic products across Core AI, Data, and Cloud-Native platforms. $320M+ pipeline, 635K+ developers activated, $10Bn product business scaled. Tuck MBA · PMP · AZ-900 · AI-900." />
 <meta name="author" content="Segun Adetayo" />
-<meta property="og:title" content="Segun Adetayo — Senior Product Marketing Lead, AI &amp; Agentic Systems" />
-<meta property="og:description" content="Product marketing leader launching and positioning AI across Core AI, Data, and Cloud-Native platforms. Microsoft. 10+ years. $320M+ pipeline." />
+<meta property="og:title" content="Segun Adetayo — Principal Product Marketing Manager, Technical PMM · AI &amp; Agentic Systems" />
+<meta property="og:description" content="Principal/Technical Product Marketing leader launching and positioning AI across Core AI, Data, and Cloud-Native platforms. Microsoft. 10+ years. $320M+ pipeline." />
 <meta property="og:type" content="profile" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='ui-monospace,monospace' font-size='34' font-weight='700' fill='%236ee7ff'%3ESA%3C/text%3E%3C/svg%3E" />
@@ -36,6 +36,48 @@
   --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --display:'Space Grotesk', var(--sans);
+  --overlay-1:rgba(255,255,255,.02);
+  --overlay-2:rgba(255,255,255,.015);
+  --hairline:rgba(255,255,255,.04);
+  --grid-line:rgba(255,255,255,.025);
+  --nav-bg:rgba(10,11,15,.72);
+  --bright-text:#fff;
+  --metric-grad-end:#93a3b8;
+  --shadow-soft:rgba(0,0,0,.4);
+  --shadow-strong:rgba(0,0,0,.6);
+  --hero-grad-1:#6ee7ff;
+  --hero-grad-2:#a7f3d0;
+  --hero-grad-3:#c4b5fd;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f7f8fa;
+    --bg-2:#eef0f4;
+    --surface:#ffffff;
+    --surface-2:#f1f3f7;
+    --border:#e1e4ea;
+    --border-strong:#cdd2dc;
+    --text:#12151c;
+    --text-2:#454b58;
+    --text-3:#6b7280;
+    --accent:#0e7490;
+    --accent-2:#15803d;
+    --accent-3:#6d28d9;
+    --overlay-1:rgba(10,15,30,.035);
+    --overlay-2:rgba(10,15,30,.025);
+    --hairline:rgba(10,15,30,.07);
+    --grid-line:rgba(10,15,30,.05);
+    --nav-bg:rgba(247,248,250,.78);
+    --bright-text:#0a0b0f;
+    --metric-grad-end:#5b6472;
+    --shadow-soft:rgba(30,35,50,.1);
+    --shadow-strong:rgba(30,35,50,.14);
+    --hero-grad-1:#0e7490;
+    --hero-grad-2:#15803d;
+    --hero-grad-3:#6d28d9;
+    color-scheme:light;
+  }
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -63,8 +105,8 @@ body::after{
   content:"";
   position:fixed; inset:0; z-index:-1;
   background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size:44px 44px;
   mask-image:radial-gradient(ellipse at 50% 30%, black 40%, transparent 85%);
   pointer-events:none;
@@ -94,8 +136,8 @@ section{padding:96px 0;position:relative}
   position:sticky;top:0;z-index:50;
   backdrop-filter:saturate(140%) blur(14px);
   -webkit-backdrop-filter:saturate(140%) blur(14px);
-  background:rgba(10,11,15,.72);
-  border-bottom:1px solid rgba(255,255,255,.04);
+  background:var(--nav-bg);
+  border-bottom:1px solid var(--hairline);
 }
 .nav .inner{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{
@@ -141,7 +183,7 @@ section{padding:96px 0;position:relative}
   color:var(--text);
 }
 .hero h1 .accent{
-  background:linear-gradient(90deg,#6ee7ff 0%,#a7f3d0 40%,#c4b5fd 100%);
+  background:linear-gradient(90deg,var(--hero-grad-1) 0%,var(--hero-grad-2) 40%,var(--hero-grad-3) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .hero .sub{
@@ -151,11 +193,11 @@ section{padding:96px 0;position:relative}
 
 .terminal{
   margin-top:48px;background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.4);
+  border-radius:14px;overflow:hidden;box-shadow:0 10px 40px var(--shadow-soft);
 }
 .terminal .head{
   display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border);
-  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
+  background:linear-gradient(180deg,var(--overlay-1),transparent);
 }
 .terminal .dot{width:12px;height:12px;border-radius:50%}
 .terminal .dot.r{background:#ff5f57}
@@ -171,7 +213,7 @@ section{padding:96px 0;position:relative}
 .terminal .cmd{color:var(--accent)}
 .terminal .flag{color:var(--accent-3)}
 .terminal .out{color:var(--text-2)}
-.terminal .key{color:#fff;font-weight:600}
+.terminal .key{color:var(--bright-text);font-weight:600}
 .terminal .caret{display:inline-block;width:9px;height:16px;background:var(--accent);vertical-align:-3px;animation:blink 1.1s steps(1) infinite;border-radius:1px}
 @keyframes blink{50%{opacity:0}}
 
@@ -202,7 +244,7 @@ section{padding:96px 0;position:relative}
 .metric .value{
   font-family:var(--display);font-weight:600;font-size:clamp(32px,3.4vw,44px);
   letter-spacing:-.02em;line-height:1;
-  background:linear-gradient(180deg,#fff, #93a3b8);
+  background:linear-gradient(180deg,var(--bright-text), var(--metric-grad-end));
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .metric .label{margin-top:10px;color:var(--text-2);font-size:14px}
@@ -242,7 +284,7 @@ section{padding:96px 0;position:relative}
   content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at var(--mx,50%) var(--my,0%),rgba(110,231,255,.08),transparent 60%);
   opacity:0;transition:opacity .3s;pointer-events:none;
 }
-.case:hover{transform:translateY(-3px);border-color:var(--border-strong);box-shadow:0 20px 60px -20px rgba(0,0,0,.6)}
+.case:hover{transform:translateY(-3px);border-color:var(--border-strong);box-shadow:0 20px 60px -20px var(--shadow-strong)}
 .case:hover::before{opacity:1}
 .case .index{
   font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:.1em;
@@ -256,7 +298,7 @@ section{padding:96px 0;position:relative}
 .case .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .case .pill{
   font-family:var(--mono);font-size:11px;color:var(--text-2);padding:5px 10px;border:1px solid var(--border);
-  border-radius:999px;background:rgba(255,255,255,.02);
+  border-radius:999px;background:var(--overlay-1);
 }
 .case .read{
   display:inline-flex;align-items:center;gap:8px;margin-top:22px;color:var(--accent);font-family:var(--mono);font-size:13px;
@@ -267,7 +309,7 @@ section{padding:96px 0;position:relative}
 
 .case .mini-stats{
   display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 0;padding:18px;
-  border:1px dashed var(--border-strong);border-radius:12px;background:rgba(255,255,255,.015);
+  border:1px dashed var(--border-strong);border-radius:12px;background:var(--overlay-2);
 }
 .case .mini-stats div span{display:block;font-family:var(--display);font-size:22px;font-weight:600;color:var(--text);letter-spacing:-.02em}
 .case .mini-stats div small{font-size:11px;color:var(--text-3);font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase}
@@ -280,12 +322,12 @@ section{padding:96px 0;position:relative}
 .modal-overlay.open{display:flex}
 .modal{
   width:min(900px,100%);background:var(--bg-2);border:1px solid var(--border);border-radius:20px;
-  box-shadow:0 40px 80px rgba(0,0,0,.6);overflow:hidden;animation:slideUp .3s ease;
+  box-shadow:0 40px 80px var(--shadow-strong);overflow:hidden;animation:slideUp .3s ease;
 }
 @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
 .modal .bar{
   display:flex;align-items:center;justify-content:space-between;padding:14px 20px;
-  border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);position:sticky;top:0;backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);background:var(--overlay-1);position:sticky;top:0;backdrop-filter:blur(8px);
 }
 .modal .bar .title{font-family:var(--mono);font-size:12px;color:var(--text-3);letter-spacing:.08em;text-transform:uppercase}
 .modal .close{
@@ -307,7 +349,7 @@ section{padding:96px 0;position:relative}
 .modal .impact-row .chip{
   border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--surface);
 }
-.modal .impact-row .chip b{display:block;font-family:var(--display);font-size:22px;letter-spacing:-.02em;color:#fff}
+.modal .impact-row .chip b{display:block;font-family:var(--display);font-size:22px;letter-spacing:-.02em;color:var(--bright-text)}
 .modal .impact-row .chip small{display:block;color:var(--text-3);font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
 .modal .section-block{margin:26px 0}
 .modal .section-block h4{
@@ -421,7 +463,7 @@ footer a:hover{color:var(--accent)}
   <div class="container inner">
     <div class="brand">
       <div class="mono-logo">SA</div>
-      <span class="status"><span class="pulse"></span>Open to Sr. Product Marketing roles · AI / Data / Cloud Native</span>
+      <span class="status"><span class="pulse"></span>Open to Principal PMM &amp; Technical PMM roles · AI / Data / Cloud Native</span>
     </div>
     <ul>
       <li><a href="#thesis">Thesis</a></li>
@@ -440,7 +482,7 @@ footer a:hover{color:var(--accent)}
 <!-- ============== HERO ============== -->
 <header class="hero">
   <div class="container">
-    <div class="eyebrow fx"><span class="dot"></span>Senior Product Marketing Lead · Microsoft · Greater Seattle</div>
+    <div class="eyebrow fx"><span class="dot"></span>Principal Product Marketing Manager · Technical PMM · Microsoft · Greater Seattle</div>
     <h1 class="fx">
       Positioning &amp; launching <span class="accent">AI &amp; agentic systems</span> where trust, auditability, and proof are the sale.
     </h1>
@@ -454,8 +496,8 @@ footer a:hover{color:var(--accent)}
         <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
         <span class="title">~/segun-adetayo ▸ whoami</span>
       </div>
-<pre><span class="prompt">$</span> <span class="cmd">whoami</span> <span class="flag">--role senior-pmm --domain "ai · data · cloud-native"</span>
-<span class="out">segun.adetayo · Senior Product Marketing Lead · Microsoft · AI &amp; Agentic Platforms</span>
+<pre><span class="prompt">$</span> <span class="cmd">whoami</span> <span class="flag">--role principal-pmm,technical-pmm --domain "ai · data · cloud-native"</span>
+<span class="out">segun.adetayo · Principal Product Marketing Manager · Technical PMM · Microsoft · AI &amp; Agentic Platforms</span>
 
 <span class="prompt">$</span> <span class="cmd">ls</span> <span class="flag">./impact/ --sort=scale</span>
 <span class="out">320M_pipeline_ai_gtm.md       635k_devs_activated.md</span>
@@ -469,7 +511,7 @@ footer a:hover{color:var(--accent)}
 <span class="out">4. Every story needs a metric that can falsify it.</span>
 
 <span class="prompt">$</span> <span class="cmd">status</span>
-<span class="out"><span class="key">Open</span> to Sr. Product Marketing roles — AI, Data, Cloud Native, Agentic AI.</span><span class="caret"></span>
+<span class="out"><span class="key">Open</span> to Principal PMM &amp; Technical PMM roles — AI, Data, Cloud Native, Agentic AI.</span><span class="caret"></span>
 </pre>
     </div>
 
@@ -677,6 +719,21 @@ footer a:hover{color:var(--accent)}
       </div>
       <div class="read">Read the strategy write-up</div>
     </a>
+
+    <div class="eyebrow fx" style="margin-top:56px"><span class="dot"></span>On Camera</div>
+    <h2 class="section-title fx" style="font-size:clamp(22px,3vw,32px)">Cloud Native Partner Showcase Series.</h2>
+    <p class="section-lede fx">Seven partner interviews I produced and hosted for Azure Kubernetes Service, unpacking how ISVs and consultancies build on AKS in production. Part of the partner motion behind Case&nbsp;04 above.</p>
+    <a class="case fx" href="https://www.youtube.com/playlist?list=PLc3Ep462vVYuMoECmjpIaKEvk7L6CZBg7" target="_blank" rel="noopener" style="display:block;margin-top:24px;max-width:640px;text-decoration:none">
+      <div class="index">VIDEO SERIES · 7 EPISODES</div>
+      <h3 style="font-size:22px">Watch the full Partner Showcase playlist</h3>
+      <p>Elastic, CastAI, Celebal, Bitnami, Traefik Labs, Grid Dynamics, and SOUTHWORKS on building production workloads on AKS.</p>
+      <div class="pills">
+        <span class="pill">Partner GTM</span>
+        <span class="pill">On-Camera Hosting</span>
+        <span class="pill">YouTube</span>
+      </div>
+      <div class="read">Watch on YouTube</div>
+    </a>
   </div>
 </section>
 
@@ -734,10 +791,18 @@ footer a:hover{color:var(--accent)}
       <div class="item fx">
         <div class="row">
           <span class="date">2021 — 2023</span>
-          <span class="title">Senior Product Marketing Lead — Oncology &amp; Hospital</span>
-          <span class="org">Servier</span>
+          <span class="title">MBA, Tuck School of Business</span>
+          <span class="org">Dartmouth College</span>
         </div>
-        <div class="desc">Repositioned GTM for safety-critical regulated portfolios — drove 200% adoption growth and 40% revenue lift in 18 months. Owned roadmap, requirements, launch playbooks, messaging, battle cards, and field toolkits through regulatory review.</div>
+        <div class="desc">Full-time MBA — general management with a focus on marketing and technology strategy.</div>
+      </div>
+      <div class="item fx">
+        <div class="row">
+          <span class="date">JUN 2022 — SEP 2022</span>
+          <span class="title">Cloud Marketing Intern</span>
+          <span class="org">Microsoft</span>
+        </div>
+        <div class="desc">Summer internship during the Tuck MBA — early cloud GTM work that led to a full-time offer and the Product Marketing Manager, Azure Data &amp; AI role above.</div>
       </div>
       <div class="item fx">
         <div class="row">
@@ -829,8 +894,8 @@ footer a:hover{color:var(--accent)}
   <div class="container">
     <div class="contact">
       <div class="eyebrow"><span class="dot"></span>Let's build something</div>
-      <h2>Looking for a Senior Product Marketing Lead who can launch AI across Core AI, Data, and Cloud-Native platforms?</h2>
-      <p>I'm actively exploring Sr. Product Marketing Lead and Principal PMM roles focused on <strong>AI / Agentic Systems</strong>, <strong>Data &amp; Cloud-Native Platforms</strong>, and <strong>Azure Digital Innovation &amp; Startups</strong>. Happy to talk full-time or staff-plus scope — remote-first, US authorized, available immediately.</p>
+      <h2>Looking for a Principal Product Marketing Manager or Technical PMM who can launch AI across Core AI, Data, and Cloud-Native platforms?</h2>
+      <p>I'm actively exploring <strong>Principal Product Marketing Manager</strong> and <strong>Technical Product Marketing Manager</strong> roles focused on <strong>AI / Agentic Systems</strong>, <strong>Data &amp; Cloud-Native Platforms</strong>, and <strong>Azure Digital Innovation &amp; Startups</strong>. Happy to talk full-time or staff-plus scope — remote-first, US authorized, available immediately.</p>
       <div class="links">
         <a class="btn primary" href="mailto:seguna.adetayo@outlook.com">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
