@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eylea Launch — Regulated Pharma GTM in Nigeria — Case Study | Segun Adetayo</title>
+<meta name="description" content="Case study: launching Eylea (aflibercept) in a regulated Nigerian ophthalmology market, achieving 300%+ adoption vs. projection in 6 months and 7-figure revenue inside 12 months.">
+<meta property="og:title" content="Eylea Launch — Case Study">
+<meta property="og:description" content="A regulated pharma launch that predates the Microsoft AI work — proof the GTM discipline travels across domains.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://oluwasegun-pmm.github.io/case-studies/bayer-eylea-launch.html">
+<style>
+  :root{
+    --paper:#f7f6fb; --paper-raised:#ffffff; --line:#e2e0ee;
+    --text:#1c1d27; --text-dim:#5c5c72;
+    --accent:#5b4fd6; --accent-soft:#eeecfc;
+    --amber:#c9781f; --amber-soft:#fbeedd;
+    --green:#1f8a63; --green-soft:#e4f5ee;
+    --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Roboto Mono", monospace;
+    --sans: -apple-system, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+    --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+    --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+      --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+      --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);line-height:1.6;}
+  a{color:var(--accent);}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 1.75rem 5rem;}
+  .back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;color:var(--text-dim);font-family:var(--mono);font-size:.78rem;padding:2rem 0 0;}
+  .back:hover{color:var(--accent);}
+  header.cover{padding:1.5rem 0 2.75rem;border-bottom:1px solid var(--line);margin-bottom:2.5rem;}
+  .kicker{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .9rem;}
+  h1{font-size:2.15rem;line-height:1.16;margin:0 0 .75rem;text-wrap:balance;letter-spacing:-.01em;}
+  p.sub{max-width:60ch;color:var(--text-dim);font-size:1.03rem;margin:0 0 1.25rem;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .chip{font-family:var(--mono);font-size:.72rem;padding:.3rem .6rem;border-radius:3px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);}
+  h2{font-size:1.2rem;margin:2.5rem 0 .8rem;letter-spacing:-.005em;}
+  h2 .num{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:500;margin-right:.6rem;}
+  p{margin:.5rem 0;max-width:68ch;}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.25rem 0;}
+  @media (max-width:720px){.kpi-row{grid-template-columns:repeat(2,1fr);}}
+  .kpi{background:var(--paper-raised);border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.25rem;}
+  .kpi .value{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.5rem;font-weight:700;color:var(--green);}
+  .kpi .label{font-size:.82rem;color:var(--text-dim);margin-top:.25rem;}
+  .stack-list{padding-left:1.2rem;}
+  .stack-list li{margin:.5rem 0;}
+  .stack-list li strong{color:var(--text);}
+  .role-note{background:var(--amber-soft);border:1px solid var(--line);border-radius:6px;padding:1rem 1.25rem;font-size:.92rem;margin:2rem 0 0;}
+  .role-note .k{font-family:var(--mono);font-size:.72rem;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem;}
+  .cta{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);}
+  .cta a.btn{font-family:var(--mono);font-size:.82rem;padding:.6rem 1rem;border-radius:6px;background:var(--accent);color:#fff;text-decoration:none;}
+  footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--text-dim);font-size:.82rem;font-family:var(--mono);}
+  footer a{color:var(--text-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Segun Adetayo — Portfolio</a>
+
+  <header class="cover">
+    <p class="kicker">Case Study 05 · Regulated Pharma GTM · Bayer, March 2019 — August 2020</p>
+    <h1>Eylea launch — regulated ophthalmology GTM in Nigeria</h1>
+    <p class="sub">Designed and ran the full go-to-market for Eylea (aflibercept), Bayer's anti-VEGF ophthalmology therapy, in a market with no existing category behavior, sparse specialist coverage, and mandatory regulatory and medical review at every commercial touchpoint.</p>
+    <div class="meta-row">
+      <span class="chip">Role: Country Product Marketing Lead, Ophthalmology &amp; Cardiology</span>
+      <span class="chip">Constraint: Regulated market, mandatory medical/legal review</span>
+    </div>
+  </header>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="value">300%+</div><div class="label">Adoption vs. projection in 6 months</div></div>
+    <div class="kpi"><div class="value">7-figure</div><div class="label">Revenue inside 12 months</div></div>
+    <div class="kpi"><div class="value">Full</div><div class="label">Product lifecycle ownership</div></div>
+    <div class="kpi"><div class="value">Regulated</div><div class="label">Medical/legal/commercial approval loop</div></div>
+  </div>
+
+  <h2><span class="num">01</span>The problem</h2>
+  <p>Eylea was entering a market where anti-VEGF intravitreal therapy for retinal disease was barely an established category — most ophthalmologists were still managing patients with older, less effective standards of care, and patients themselves had no framework for understanding why a newer, costlier injection therapy was worth adopting. Every piece of messaging, every physician education program, and every patient-facing material had to clear medical, legal, and regulatory review before it could reach the field — the kind of approval loop that kills GTM velocity if you don't design for it upfront.</p>
+
+  <h2><span class="num">02</span>The insight</h2>
+  <p>The launch wouldn't be won on message polish — it would be won on <strong>physician conviction</strong>. Ophthalmologists needed to see peer-level clinical evidence and hands-on case support before they'd change a standard of care they'd used for years, and patients needed a referring physician who was already convinced, not a brochure. The GTM had to be built around building specialist confidence first, category awareness second.</p>
+
+  <h2><span class="num">03</span>Decisions I made</h2>
+  <ul class="stack-list">
+    <li>Built the launch plan and messaging architecture <strong>in parallel with the medical/legal/regulatory review track</strong> from day one, instead of writing materials and then discovering what compliance would allow — this is what protected launch velocity in a market where every asset needed sign-off.</li>
+    <li>Prioritized <strong>specialist-level clinical engagement</strong> (case-based education, peer discussion formats) over broad awareness spend, on the thesis that ophthalmologist conviction was the actual conversion lever.</li>
+    <li>Coordinated medical, commercial, and regulatory stakeholders through every launch milestone so approvals didn't become the bottleneck once field execution started.</li>
+    <li>Owned the full product lifecycle — not just launch-day messaging — so post-launch adoption signal could feed back into physician engagement priorities in real time.</li>
+  </ul>
+
+  <h2><span class="num">04</span>Outcome</h2>
+  <ul class="stack-list">
+    <li>Adoption reached <strong>300%+ of the original 6-month projection</strong>.</li>
+    <li>Revenue scaled to <strong>7 figures within 12 months</strong> of launch.</li>
+    <li>Established a repeatable model for launching specialty therapies into markets with underdeveloped category behavior — used as a reference for subsequent specialty launches.</li>
+  </ul>
+
+  <h2><span class="num">05</span>Learnings</h2>
+  <ul class="stack-list">
+    <li><strong>Compliance review is a launch-timeline input, not a launch-timeline risk.</strong> Build it into the plan from day one and it stops being the thing that blows deadlines.</li>
+    <li><strong>In categories with no existing behavior, you're not marketing a product — you're building physician conviction first.</strong> Everything else follows from that.</li>
+    <li><strong>The discipline is domain-agnostic.</strong> The same instinct — find the actual gatekeeper, build the artifact that unblocks them — is what later shaped how I approached AI evaluation frameworks at Microsoft.</li>
+  </ul>
+
+  <div class="role-note">
+    <span class="k">Note</span>
+    This predates my Microsoft tenure and is included to show the GTM discipline travels across regulated domains — pharma and enterprise AI — not just within one company's distribution.
+  </div>
+
+  <div class="cta">
+    <span style="font-family:var(--mono);font-size:.8rem;color:var(--text-dim)">Want the deeper walk-through? Happy to whiteboard it.</span>
+    <a class="btn" href="mailto:seguna.adetayo@outlook.com?subject=Let%27s%20talk%20about%20the%20Eylea%20launch">Email me &rarr;</a>
+  </div>
+
+  <footer>
+    Case study 05 — Eylea Launch, Bayer · by Segun Adetayo
+  </footer>
+</div>
+</body>
+</html>

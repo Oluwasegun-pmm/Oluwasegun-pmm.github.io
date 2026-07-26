@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AKS Partner Showcase &amp; Forum — Rebuilding a Partner Motion — Case Study | Segun Adetayo</title>
+<meta name="description" content="Case study: launching the first AKS Partner Forum, signing 4 strategic partners into a Showcase series, and re-engaging 50+ disengaged OSS MVPs.">
+<meta property="og:title" content="AKS Partner Showcase & Forum — Case Study">
+<meta property="og:description" content="Rebuilding a partner motion by treating community re-engagement as signal, not broadcast.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://oluwasegun-pmm.github.io/case-studies/aks-partner-forum.html">
+<style>
+  :root{
+    --paper:#f7f6fb; --paper-raised:#ffffff; --line:#e2e0ee;
+    --text:#1c1d27; --text-dim:#5c5c72;
+    --accent:#5b4fd6; --accent-soft:#eeecfc;
+    --amber:#c9781f; --amber-soft:#fbeedd;
+    --green:#1f8a63; --green-soft:#e4f5ee;
+    --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Roboto Mono", monospace;
+    --sans: -apple-system, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+    --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+    --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#111119; --paper-raised:#181822; --line:#2d2d3d;
+      --text:#eceaf7; --text-dim:#a4a2ba; --accent:#9a8cff; --accent-soft:#242145;
+      --amber:#e3a15c; --amber-soft:#3a2c17; --green:#5fcba0; --green-soft:#123528;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);line-height:1.6;}
+  a{color:var(--accent);}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 1.75rem 5rem;}
+  .back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;color:var(--text-dim);font-family:var(--mono);font-size:.78rem;padding:2rem 0 0;}
+  .back:hover{color:var(--accent);}
+  header.cover{padding:1.5rem 0 2.75rem;border-bottom:1px solid var(--line);margin-bottom:2.5rem;}
+  .kicker{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .9rem;}
+  h1{font-size:2.15rem;line-height:1.16;margin:0 0 .75rem;text-wrap:balance;letter-spacing:-.01em;}
+  p.sub{max-width:60ch;color:var(--text-dim);font-size:1.03rem;margin:0 0 1.25rem;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .chip{font-family:var(--mono);font-size:.72rem;padding:.3rem .6rem;border-radius:3px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);}
+  h2{font-size:1.2rem;margin:2.5rem 0 .8rem;letter-spacing:-.005em;}
+  h2 .num{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:500;margin-right:.6rem;}
+  p{margin:.5rem 0;max-width:68ch;}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.25rem 0;}
+  @media (max-width:720px){.kpi-row{grid-template-columns:repeat(2,1fr);}}
+  .kpi{background:var(--paper-raised);border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.25rem;}
+  .kpi .value{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.5rem;font-weight:700;color:var(--green);}
+  .kpi .label{font-size:.82rem;color:var(--text-dim);margin-top:.25rem;}
+  .stack-list{padding-left:1.2rem;}
+  .stack-list li{margin:.5rem 0;}
+  .stack-list li strong{color:var(--text);}
+  .cta{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);}
+  .cta a.btn{font-family:var(--mono);font-size:.82rem;padding:.6rem 1rem;border-radius:6px;background:var(--accent);color:#fff;text-decoration:none;}
+  footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--text-dim);font-size:.82rem;font-family:var(--mono);}
+  footer a{color:var(--text-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Segun Adetayo — Portfolio</a>
+
+  <header class="cover">
+    <p class="kicker">Case Study 04 · Partner / Community · Microsoft, December 2024 — July 2025</p>
+    <h1>AKS Partner Showcase &amp; Forum — rebuilding a partner motion</h1>
+    <p class="sub">Stood up the first AKS Partner Forum (400+ partners, C-level speakers), signed 4 strategic partners in a Showcase series, and re-engaged 50+ disengaged OSS MVPs to reverse a community trust deficit.</p>
+    <div class="meta-row">
+      <span class="chip">Role: Product Marketing Lead, Cloud Natives &amp; AI (AKS)</span>
+      <span class="chip">Motion: Partner GTM + OSS Community</span>
+    </div>
+  </header>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="value">400+</div><div class="label">Partners at forum</div></div>
+    <div class="kpi"><div class="value">4</div><div class="label">Strategic partners secured</div></div>
+    <div class="kpi"><div class="value">50+</div><div class="label">OSS MVPs re-engaged</div></div>
+    <div class="kpi"><div class="value">Agentic</div><div class="label">Workload positioning</div></div>
+  </div>
+
+  <h2><span class="num">01</span>The problem</h2>
+  <p>AKS had a partner motion degrading on two fronts simultaneously: strategic partners lacked a repeatable showcase and co-sell path, and the OSS &amp; MVP community was voting with its feet — trust was eroding and senior OSS MVPs were openly disengaging from Microsoft-owned channels. Without both, AKS couldn't credibly claim to be the platform for cloud-native AI.</p>
+
+  <h2><span class="num">02</span>The insight</h2>
+  <p>Partner-led pipeline isn't an events problem — it's a product storytelling infrastructure problem. What was missing was a repeatable showcase format with clear commit gates, combined with a community re-engagement arc that treated MVPs as signal, not broadcast targets.</p>
+
+  <h2><span class="num">03</span>Decisions I made</h2>
+  <ul class="stack-list">
+    <li>Launched the <strong>AKS Partner Showcase Series</strong> — a repeatable format with commit gates that secured 4 strategic partners into co-sell motions.</li>
+    <li>Founded the <strong>first AKS Partner Forum</strong>, attracting 400+ partners with C-level speakers — purpose-built as repeatable GTM infrastructure for partner-led pipeline.</li>
+    <li>Targeted <strong>50+ disengaged OSS MVPs at MVP Summit</strong> with AKS-specific positioning addressing their stated friction points.</li>
+    <li>Positioned AKS as the platform for <strong>agentic AI workloads</strong> — containerized inferencing, secure model deployment, intelligent orchestration — giving partners a coherent pitch.</li>
+  </ul>
+
+  <h2><span class="num">04</span>Outcome</h2>
+  <ul class="stack-list">
+    <li><strong>4 strategic partners</strong> secured through the Showcase.</li>
+    <li><strong>400+ partner forum attendees</strong> with a C-level speaker lineup, establishing a recurring GTM asset.</li>
+    <li><strong>OSS community trust visibly rebuilt</strong> — 50+ disengaged MVPs re-engaged with renewed advocacy beyond Microsoft-owned channels.</li>
+    <li>Agentic workload positioning adopted by field and partner motion.</li>
+  </ul>
+
+  <h2><span class="num">05</span>Learnings</h2>
+  <ul class="stack-list">
+    <li><strong>Community trust is earned by naming what went wrong.</strong> Re-engagement worked because the first conversation wasn't a pitch.</li>
+    <li><strong>Events scale when they're products.</strong> The Forum had acceptance criteria, a roadmap, and a retro — just like any feature.</li>
+    <li><strong>Strategic partners buy clarity before capability.</strong> "The platform for agentic AI workloads" travels further than feature bullets.</li>
+  </ul>
+
+  <div class="cta">
+    <span style="font-family:var(--mono);font-size:.8rem;color:var(--text-dim)">Want the deeper walk-through? Happy to whiteboard it.</span>
+    <a class="btn" href="mailto:seguna.adetayo@outlook.com?subject=Let%27s%20talk%20about%20AKS%20Partner%20Forum">Email me &rarr;</a>
+  </div>
+
+  <footer>
+    Case study 04 — AKS Partner Showcase &amp; Forum · by Segun Adetayo
+  </footer>
+</div>
+</body>
+</html>

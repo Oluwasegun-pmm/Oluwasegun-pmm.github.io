@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0b0f"/>
+      <stop offset="100%" stop-color="#0f1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6ee7ff"/>
+      <stop offset="40%" stop-color="#a7f3d0"/>
+      <stop offset="100%" stop-color="#c4b5fd"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#242935" stroke-width="2"/>
+  <text x="80" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" letter-spacing="2" fill="#6d7487">SEGUN ADETAYO · TECHNICAL PMM</text>
+  <text x="80" y="230" font-family="'Space Grotesk', system-ui, sans-serif" font-size="58" font-weight="700" fill="#e7ecf2">Positioning &amp; launching</text>
+  <text x="80" y="300" font-family="'Space Grotesk', system-ui, sans-serif" font-size="58" font-weight="700" fill="url(#accent)">AI &amp; agentic systems</text>
+  <text x="80" y="370" font-family="'Space Grotesk', system-ui, sans-serif" font-size="34" font-weight="500" fill="#a6adbb">where trust, auditability, and proof are the sale.</text>
+  <text x="80" y="470" font-family="ui-monospace, monospace" font-size="24" fill="#6ee7ff">$320M+ pipeline contribution</text>
+  <text x="440" y="470" font-family="ui-monospace, monospace" font-size="24" fill="#a7f3d0">635K+ developers reached</text>
+  <text x="80" y="510" font-family="ui-monospace, monospace" font-size="24" fill="#c4b5fd">$10Bn product business contributed to</text>
+  <text x="80" y="590" font-family="ui-monospace, monospace" font-size="20" fill="#6d7487">Microsoft · AI, Data &amp; Cloud-Native Platforms</text>
+</svg>
